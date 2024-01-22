@@ -1,0 +1,9 @@
+# ninja log v5
+123	2013	7275992179667280	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	344d119ddd14b5a4
+75	2223	7275992181363691	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	877830d413ee76e0
+58	2639	7275992185378509	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	dbaee1d9b0352566
+25	3171	7275992191369187	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	9ccb23a22c8442dd
+92	3337	7275992192775478	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cc96030a27aa3845
+169	3391	7275992193583343	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	7fbacb3c7e6703ff
+2	3697	7275992196643090	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	90dfdb26a0d100ac
+3698	4041	7275992199210031	C:/Users/cksru/Desktop/project/MarioPartyMiniGame_Imitation/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/152o5p3k/obj/arm64-v8a/libgame.so	b8dbc215024e73e3
