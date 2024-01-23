@@ -1,35 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
+using Fusion;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
-    Rigidbody player;
+    CharacterController playerController;
+    Vector3 _velocity;
 
     float jumpPower = 5.0f;
-
-    bool isBar = true;
+    float GravityValue = -9.81f;
+    bool _jumpPressed = false;
 
     void Awake()
     {
-        player = GetComponent<Rigidbody>();
+        playerController = GetComponent<CharacterController>();
     }
 
-    public void Jump()
+    void Update()
     {
-        if (isBar)
+        if(Input.GetMouseButtonDown(0))
         {
-            player.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            _jumpPressed = true;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void FixedUpdateNetwork()
     {
-        if(other.name == "Down_Bar") isBar = true;
-    }
+        if (HasStateAuthority == false)
+        {
+            return;
+        }
 
-    private void OnTriggerExit(Collider other)
-    {
-        isBar = false;
+        if (playerController.isGrounded)
+        {
+            _velocity = new Vector3(0, -1, 0);
+        }
+
+        Vector3 move = Vector3.zero;
+
+        _velocity.y += GravityValue * Runner.DeltaTime;
+        if (_jumpPressed && playerController.isGrounded)
+        {
+            _velocity.y += jumpPower;
+        }
+        playerController.Move(move + _velocity * Runner.DeltaTime);
+
+        _jumpPressed = false;
     }
 }

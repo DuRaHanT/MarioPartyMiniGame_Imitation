@@ -14,7 +14,7 @@ public class Up_Bar : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("ScoreUp", 0f, 1f);    
+        //InvokeRepeating("ScoreUp", 0f, 1f);    
     }
 
     private void OnTriggerEnter(Collider other)

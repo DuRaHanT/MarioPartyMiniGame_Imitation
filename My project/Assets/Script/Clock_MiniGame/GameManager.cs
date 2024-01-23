@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Fusion;
 using UnityEngine;
 using TMPro;
 
@@ -34,12 +35,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        RotationCenter(upBar_index);
+        // RotationCenter(upBar_index);
 
-        if(currentScore >= scoreThreshold)
+        // if(currentScore >= scoreThreshold)
+        // {
+        //     SetSpeed();
+        //     currentScore = 0;
+        // }
+    }
+
+    public void StartGame()
+    {
+        Player_SetParent[] players = FindObjectsOfType<Player_SetParent>();
+
+        for(int i = 0; i < players.Length; i++)
         {
-            SetSpeed();
-            currentScore = 0;
+            players[i].parent = centerPosition[downBar_index].gameObject;
+            players[i].player = players[i].gameObject;
+            players[i].SetParent();
+            players[i].ResetTransfom(i);
         }
     }
 
@@ -69,7 +83,6 @@ public class GameManager : MonoBehaviour
         if (randomValue < 0.9f)
         {
             rotationSpeed = Random.Range(50.0f, 350.0f);
-            Debug.Log($"90% {rotationSpeed}");
         }
 
         else
@@ -82,7 +95,6 @@ public class GameManager : MonoBehaviour
             {
                 rotationSpeed = 50.0f;
             }
-            Debug.Log($"10% {rotationSpeed}");
         }
     }
 }
