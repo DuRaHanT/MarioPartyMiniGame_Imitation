@@ -6,10 +6,12 @@ using UnityEngine;
 using TMPro;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     Transform[] centerPosition;
+    public GameObject[] networkPlayers;
     public TextMeshProUGUI scoreText;
+    [Networked] public int playerCount {get; set;}
 
     int upBar_index = 0;
     int downBar_index = 0;
@@ -19,11 +21,17 @@ public class GameManager : MonoBehaviour
     float rotationSpeed = 50.0f;  // minimum = 50.0f  maximum = 350.0f
     float speedChangeThreshold = 30.0f;
 
+    GUIStyle guiStyle;
+
     void Awake()
     {
         Center_Script[] center = FindObjectsOfType<Center_Script>();
+        //networkPlayers = GameObject.FindGameObjectsWithTag("Player");
 
         centerPosition = new Transform[center.Length];
+
+        guiStyle = new GUIStyle();
+        guiStyle.fontSize = 72;
 
         for (int i = 0;i < center.Length;i++)
         {
@@ -42,6 +50,16 @@ public class GameManager : MonoBehaviour
         //     SetSpeed();
         //     currentScore = 0;
         // }
+    }
+
+    // public override void FixedUpdateNetwork()
+    // {
+    //     playerCount = GameObject.FindGameObjectsWithTag("Character").Length;
+    // }
+    
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 20), playerCount.ToString(), guiStyle);
     }
 
     public void StartGame()

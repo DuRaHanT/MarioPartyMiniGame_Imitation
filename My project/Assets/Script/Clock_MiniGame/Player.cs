@@ -4,47 +4,41 @@ using UnityEngine.UI;
 
 public class Player : NetworkBehaviour
 {
-    CharacterController playerController;
-    Vector3 _velocity;
-
-    float jumpPower = 5.0f;
-    float GravityValue = -9.81f;
-    bool _jumpPressed = false;
+    GameManager gameManager;
+    NetworkTransform networkTransform;
+    bool isTeleport = false;
+    GUIStyle guiStyle;
 
     void Awake()
     {
-        playerController = GetComponent<CharacterController>();
+        guiStyle = new GUIStyle();
+        guiStyle.fontSize = 72;
+
     }
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            _jumpPressed = true;
-        }
+        if(gameManager == null) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if(networkTransform == null) networkTransform = GetComponent<NetworkTransform>();
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (HasStateAuthority == false)
-        {
-            return;
-        }
+        // Teleport();
+    }
 
-        if (playerController.isGrounded)
-        {
-            _velocity = new Vector3(0, -1, 0);
-        }
+    void Teleport()
+    {
 
-        Vector3 move = Vector3.zero;
+        if(isTeleport) return;
+        if(gameManager.playerCount <= 0) networkTransform.Teleport(gameManager.networkPlayers[0].transform.position);   
+        else networkTransform.Teleport(gameManager.networkPlayers[gameManager.playerCount].transform.position);
+        isTeleport = true;
+    }
 
-        _velocity.y += GravityValue * Runner.DeltaTime;
-        if (_jumpPressed && playerController.isGrounded)
-        {
-            _velocity.y += jumpPower;
-        }
-        playerController.Move(move + _velocity * Runner.DeltaTime);
-
-        _jumpPressed = false;
+    void OnGUI()
+    {
+        NetworkObject networkObject = new NetworkObject();
+        GUI.Label(new Rect(10, 10 + gameManager.playerCount * 50, 300, 20), networkObject.InputAuthority.ToString(), guiStyle);
     }
 }
