@@ -11,7 +11,7 @@ public class GameManager : NetworkBehaviour
     Transform[] centerPosition;
     public GameObject[] networkPlayers;
     public TextMeshProUGUI scoreText;
-    [Networked] public int playerCount {get; set;}
+    public int playerIndex;
 
     int upBar_index = 0;
     int downBar_index = 0;
@@ -21,17 +21,12 @@ public class GameManager : NetworkBehaviour
     float rotationSpeed = 50.0f;  // minimum = 50.0f  maximum = 350.0f
     float speedChangeThreshold = 30.0f;
 
-    GUIStyle guiStyle;
 
     void Awake()
     {
         Center_Script[] center = FindObjectsOfType<Center_Script>();
-        //networkPlayers = GameObject.FindGameObjectsWithTag("Player");
 
         centerPosition = new Transform[center.Length];
-
-        guiStyle = new GUIStyle();
-        guiStyle.fontSize = 72;
 
         for (int i = 0;i < center.Length;i++)
         {
@@ -50,29 +45,6 @@ public class GameManager : NetworkBehaviour
         //     SetSpeed();
         //     currentScore = 0;
         // }
-    }
-
-    // public override void FixedUpdateNetwork()
-    // {
-    //     playerCount = GameObject.FindGameObjectsWithTag("Character").Length;
-    // }
-    
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 300, 20), playerCount.ToString(), guiStyle);
-    }
-
-    public void StartGame()
-    {
-        Player_SetParent[] players = FindObjectsOfType<Player_SetParent>();
-
-        for(int i = 0; i < players.Length; i++)
-        {
-            players[i].parent = centerPosition[downBar_index].gameObject;
-            players[i].player = players[i].gameObject;
-            players[i].SetParent();
-            players[i].ResetTransfom(i);
-        }
     }
 
     void CenterIndexCheck()

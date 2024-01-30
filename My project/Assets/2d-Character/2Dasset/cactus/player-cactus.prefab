@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457970007451826734}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
@@ -71,8 +71,9 @@ Transform:
   - {fileID: 2337232705577255453}
   - {fileID: 3524627834330637392}
   - {fileID: 3807151169347796627}
+  - {fileID: 1326608741470804784}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6019931578421477429
 Animator:
   serializedVersion: 7
@@ -192,6 +193,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8837b1578d000d1468fccd4c3ee578d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1742196592367634278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326608741470804784}
+  m_Layer: 0
+  m_Name: ID
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326608741470804784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742196592367634278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7760297077938489112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809108116138809110
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +311,7 @@ MonoBehaviour:
     - {fileID: 5130606593241760864}
     - {fileID: 5563091638819461811}
     m_DefaultLocalRotations:
-    - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+    - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: -0, y: -0, z: -0.7420829, w: -0.6703081}
     m_StoredLocalRotations:
@@ -405,7 +437,7 @@ MonoBehaviour:
     - {fileID: 5130606593241760864}
     - {fileID: 886111016318437450}
     m_DefaultLocalRotations:
-    - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+    - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: -0, y: -0, z: -0.96248233, w: 0.27134427}
     m_StoredLocalRotations:
@@ -469,7 +501,7 @@ MonoBehaviour:
     - {fileID: 5130606593241760864}
     - {fileID: 6157933843893534818}
     m_DefaultLocalRotations:
-    - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+    - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: -0, y: -0, z: 0.11155042, w: 0.9937588}
     m_StoredLocalRotations:
@@ -533,7 +565,7 @@ MonoBehaviour:
     - {fileID: 5130606593241760864}
     - {fileID: 7154321602365910645}
     m_DefaultLocalRotations:
-    - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+    - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: -0, y: -0, z: -0.67165434, w: -0.74086475}
     m_StoredLocalRotations:
