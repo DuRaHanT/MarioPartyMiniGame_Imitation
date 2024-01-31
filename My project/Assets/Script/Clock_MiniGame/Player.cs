@@ -5,5 +5,8 @@ using TMPro;
 
 public class Player : NetworkBehaviour
 {
+    void Awake()
+    {
 
+    }
 }
